@@ -1,5 +1,5 @@
 {
-  "name": "nw-playground",
+  "name": "nw-playground-app",
   "version": "0.1.0",
   "main": "index.html",
   "window": {
