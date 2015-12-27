@@ -1,0 +1,10 @@
+
+node_modules/**
+
+# We only use a few files from the default highlight.js bundle,
+# ignore the rest
+highlight/**
+
+# We only use a few files from the default bootstrap bundle,
+# ignore the rest
+bootstrap/**
