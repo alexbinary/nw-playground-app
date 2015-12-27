@@ -16,68 +16,23 @@ onload = function(){
 
 
   /*
-   * wire buttons
+   * create playground
    */
 
-  domButtonInspector.addEventListener('click', function() {
-    if (win.isDevToolsOpen()) {
-      win.closeDevTools();
-      domButtonInspector.innerText = 'Open Inspector';
-    } else {
-      win.showDevTools();
-      domButtonInspector.innerText = 'Close Inspector';
+  require('nw-playground')(document, hljs).convertAll(
+
+    function(element, wrapper) {
+
+      var btnRun = wrapper.querySelector('.nw-playground-button-run');
+
+      btnRun.className += ' btn btn-success';
+
+      var i = document.createElement('i');
+      i.className = 'glyphicon glyphicon-play';
+
+      btnRun.insertBefore(document.createTextNode(' '), btnRun.firstChild);
+      btnRun.insertBefore(i, btnRun.firstChild);
     }
-  });
-
-  domButtonReload.addEventListener('click', function() {
-    win.reloadDev();
-  });
-
-  domButtonClear.addEventListener('click', function() {
-    clearCode();
-  });
-
-  domButtonRun.addEventListener('click', function() {
-    runCode();
-  });
-
-
-  /*
-   * setup editor
-   */
-
-  // highlight code at startup then on blur
-  domCode.addEventListener('blur', function(){
-    hljs.highlightBlock(domCode);
-  });
-  hljs.highlightBlock(domCode);
-
-  // fix tab key
-  domCode.addEventListener('keydown', function(e){
-    if(e.which === 9) { // tab
-      e.preventDefault();
-      document.execCommand('insertHTML', false, '\t');
-    }
-  });
-
-  function clearCode() {
-    domCode.innerText = '';
-  }
-
-  function runCode() {
-    var scriptContent = domCode.innerText;
-    scriptContent = '(function(){'+scriptContent+'})();';
-
-    var dom;
-    while(dom = document.querySelector('.scriptTag')) {
-      document.body.removeChild(dom);
-    }
-
-    var scriptTag = document.createElement('script');
-    scriptTag.className = 'scriptTag';
-    scriptTag.appendChild(document.createTextNode(scriptContent));
-
-    document.body.appendChild(scriptTag);
-  }
+  );
 
 };
