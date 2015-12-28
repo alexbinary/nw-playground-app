@@ -7,5 +7,8 @@
     "toolbar": true,
     "width": 800,
     "height": 600
+  },
+  "dependencies": {
+    "nw-playground": "^0.1.0"
   }
 }
