@@ -9,3 +9,7 @@ _NW.js Playground_ lets you write and execute pieces of code without having
 to setup a NW.js app. Just type your code and click Run.
 
 <img src="screenshot.png">
+
+## Download
+
+[Download .app package for Mac OSX](https://github.com/alexbinary/nw-playground-app/releases/download/0.1.0/nw-playground-app.app.zip)
